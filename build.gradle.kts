@@ -4,6 +4,8 @@ plugins {
 
 group = "me.itzisonn_.registry"
 version = "1.0"
+description = "RegistryLib"
+java.sourceCompatibility = JavaVersion.VERSION_21
 
 val lombokVersion = "1.18.36"
 
