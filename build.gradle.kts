@@ -1,21 +1,20 @@
 plugins {
     id("java")
+    id("io.freefair.lombok") version "8.13.1"
 }
 
 group = "me.itzisonn_.registry"
-version = "1.0"
+version = "1.1"
 description = "RegistryLib"
 java.sourceCompatibility = JavaVersion.VERSION_21
-
-val lombokVersion = "1.18.36"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    compileOnly("org.projectlombok:lombok:$lombokVersion")
-    annotationProcessor("org.projectlombok:lombok:$lombokVersion")
+    compileOnly("org.projectlombok:lombok:1.18.38")
+    annotationProcessor("org.projectlombok:lombok:1.18.38")
 }
 
 tasks.withType<JavaCompile> {

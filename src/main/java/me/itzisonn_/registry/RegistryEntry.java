@@ -32,7 +32,7 @@ public class RegistryEntry<T> {
      * @param value Entry's value
      * @param overrideable Is this entry overridable
      *
-     * @throws NullPointerException If given identifier or value is null
+     * @throws NullPointerException If either identifier or value is null
      */
     public RegistryEntry(RegistryIdentifier identifier, T value, boolean overrideable) throws NullPointerException {
         if (identifier == null) throw new NullPointerException("Identifier can't be null");
@@ -44,14 +44,14 @@ public class RegistryEntry<T> {
     }
 
     /**
-     * RegistryEntry constructor with overridable param defaulted to true
+     * RegistryEntry constructor with overridable set to true
      *
      * @param identifier Entry's id
      * @param value Entry's value
      *
-     * @throws NullPointerException If given identifier or value is null
+     * @throws NullPointerException If either identifier or value is null
      */
-    public RegistryEntry(RegistryIdentifier identifier, T value) {
+    public RegistryEntry(RegistryIdentifier identifier, T value) throws NullPointerException {
         this(identifier, value, true);
     }
 }

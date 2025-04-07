@@ -47,7 +47,7 @@ public class OrderedRegistry<T> implements MultipleEntryRegistry<T> {
         if (index < 0 || index > entries.size()) throw new IllegalArgumentException("Entry's index is out of range");
 
         RegistryEntry<T> entry = getEntry(identifier);
-        if (entry != null && !entry.isOverrideable()) throw new IllegalArgumentException("Entry with identifier " + identifier + " already exists!");
+        if (entry != null && !entry.isOverrideable()) throw new IllegalArgumentException("Entry with identifier " + identifier + " already exists");
         entries.add(index, new RegistryEntry<>(identifier, value, overridable));
     }
 

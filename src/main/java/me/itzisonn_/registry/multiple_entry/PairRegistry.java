@@ -34,11 +34,11 @@ public class PairRegistry<K, V> implements MultipleEntryRegistry<Pair<K, V>> {
         if (pair.getValue() == null) throw new NullPointerException("Pair's value can't be null");
 
         RegistryEntry<Pair<K, V>> entry = getEntry(identifier);
-        if (entry != null && !entry.isOverrideable()) throw new IllegalArgumentException("Entry with identifier " + identifier + " already exists!");
+        if (entry != null && !entry.isOverrideable()) throw new IllegalArgumentException("Entry with identifier " + identifier + " already exists");
         entry = getEntryByKey(pair.getKey());
-        if (entry != null && !entry.isOverrideable()) throw new IllegalArgumentException("Entry with key " + pair.getKey() + " already exists!");
+        if (entry != null && !entry.isOverrideable()) throw new IllegalArgumentException("Entry with key " + pair.getKey() + " already exists");
         entry = getEntryByValue(pair.getValue());
-        if (entry != null && !entry.isOverrideable()) throw new IllegalArgumentException("Entry with value " + pair.getValue() + " already exists!");
+        if (entry != null && !entry.isOverrideable()) throw new IllegalArgumentException("Entry with value " + pair.getValue() + " already exists");
 
         entries.add(new RegistryEntry<>(identifier, pair, overridable));
     }

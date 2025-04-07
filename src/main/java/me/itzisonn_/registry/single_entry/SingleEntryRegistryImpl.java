@@ -18,7 +18,7 @@ public class SingleEntryRegistryImpl<T> implements SingleEntryRegistry<T> {
         if (identifier == null) throw new NullPointerException("Identifier can't be null");
         if (value == null) throw new NullPointerException("Value can't be null");
 
-        if (hasEntry() && !entry.isOverrideable()) throw new IllegalArgumentException("Registry already has a value!");
+        if (hasEntry() && !entry.isOverrideable()) throw new IllegalArgumentException("Registry already has a value");
         entry = new RegistryEntry<>(identifier, value, overridable);
     }
 }

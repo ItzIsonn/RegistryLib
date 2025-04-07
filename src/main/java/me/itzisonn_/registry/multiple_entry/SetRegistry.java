@@ -20,7 +20,7 @@ public class SetRegistry<T> implements MultipleEntryRegistry<T> {
         if (value == null) throw new NullPointerException("Value can't be null");
 
         RegistryEntry<T> entry = getEntry(identifier);
-        if (entry != null && !entry.isOverrideable()) throw new IllegalArgumentException("Entry with identifier " + identifier + " already exists!");
+        if (entry != null && !entry.isOverrideable()) throw new IllegalArgumentException("Entry with identifier " + identifier + " already exists");
         entries.add(new RegistryEntry<>(identifier, value, overridable));
     }
 

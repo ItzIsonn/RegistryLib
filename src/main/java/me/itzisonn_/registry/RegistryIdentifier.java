@@ -16,6 +16,7 @@ import java.util.regex.Pattern;
 @EqualsAndHashCode
 public class RegistryIdentifier {
     public static final String IDENTIFIER_REGEX = "[a-zA-Z_][a-zA-Z0-9_]*";
+    private static final Pattern PATTERN = Pattern.compile("(.+):(.+)");
 
     /**
      * Identifier's namespace
@@ -29,8 +30,9 @@ public class RegistryIdentifier {
     private RegistryIdentifier(String namespace, String id) throws NullPointerException, IllegalArgumentException {
         if (namespace == null) throw new NullPointerException("Namespace can't be null");
         if (id == null) throw new NullPointerException("Id can't be null");
-        if (!namespace.matches(IDENTIFIER_REGEX)) throw new IllegalArgumentException("Invalid namespace present");
-        if (!id.matches(IDENTIFIER_REGEX)) throw new IllegalArgumentException("Invalid id present");
+
+        if (!namespace.matches(IDENTIFIER_REGEX)) throw new IllegalArgumentException("Invalid namespace");
+        if (!id.matches(IDENTIFIER_REGEX)) throw new IllegalArgumentException("Invalid id");
 
         this.namespace = namespace;
         this.id = id;
@@ -62,12 +64,12 @@ public class RegistryIdentifier {
     public static RegistryIdentifier of(String identifier) throws NullPointerException, IllegalArgumentException {
         if (identifier == null) throw new NullPointerException("Identifier can't be null");
 
-        Matcher matcher = Pattern.compile("(.+):(.+)").matcher(identifier);
-        if (matcher.find()) {
-            return new RegistryIdentifier(matcher.group(1), matcher.group(2));
+        Matcher matcher = PATTERN.matcher(identifier);
+        if (!matcher.matches()) {
+            throw new IllegalArgumentException("Invalid identifier '" + identifier + "'");
         }
 
-        throw new IllegalArgumentException("Invalid identifier '" + identifier + "'");
+        return new RegistryIdentifier(matcher.group(1), matcher.group(2));
     }
 
     /**
